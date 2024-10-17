@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement3D : MonoBehaviour
 {
-
     [Header("Movement")]
     public float MovementSpeed;
     public Transform orientation;
@@ -51,6 +48,8 @@ public class PlayerMovement3D : MonoBehaviour
     {
         moveDirection = orientation.forward * verticalInput + orientation.right *horizontalInput;
 
-        rb.AddForce(moveDirection.normalized * MovementSpeed * 10f, ForceMode.Force);
+        float targetSpeed = canMove ? MovementSpeed : 0f;
+
+        rb.AddForce(moveDirection.normalized * targetSpeed * 10f, ForceMode.Force);
     }
 }

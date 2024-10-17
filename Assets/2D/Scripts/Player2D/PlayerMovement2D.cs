@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement2D : MonoBehaviour
@@ -23,6 +21,10 @@ public class PlayerMovement2D : MonoBehaviour
         if (canMove)
         {
             Move();
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
         }
     }
 

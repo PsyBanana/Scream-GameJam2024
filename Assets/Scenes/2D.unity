@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 25058437}
   - component: {fileID: 25058436}
   m_Layer: 0
-  m_Name: Pl
+  m_Name: Player2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -293,37 +293,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!1 &908090693
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 908090694}
-  m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &908090694
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 908090693}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 47.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1475372399
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +303,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1475372402}
   - component: {fileID: 1475372401}
-  - component: {fileID: 1475372400}
   m_Layer: 0
   m_Name: Camera-TextureRender
   m_TagString: Untagged
@@ -342,14 +310,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1475372400
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1475372399}
-  m_Enabled: 1
 --- !u!20 &1475372401
 Camera:
   m_ObjectHideFlags: 0
@@ -625,7 +585,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2137738893}
   - component: {fileID: 2137738892}
-  - component: {fileID: 2137738891}
   m_Layer: 0
   m_Name: 2D Camera
   m_TagString: MainCamera
@@ -633,14 +592,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &2137738891
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2137738890}
-  m_Enabled: 1
 --- !u!20 &2137738892
 Camera:
   m_ObjectHideFlags: 0
@@ -713,7 +664,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 2137738893}
   - {fileID: 1519199572}
-  - {fileID: 908090694}
   - {fileID: 25058435}
   - {fileID: 1982912179}
   - {fileID: 1475372402}
