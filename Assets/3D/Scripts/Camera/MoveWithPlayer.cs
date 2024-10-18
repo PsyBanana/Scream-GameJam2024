@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveWithPlayer : MonoBehaviour
@@ -10,6 +8,11 @@ public class MoveWithPlayer : MonoBehaviour
     
     void Update()
     {
+        if (ConnectionManager.Instance.IsConnected)
+        {
+            return;
+        }
+
         transform.position = cameraPosition.position;
     }
 }

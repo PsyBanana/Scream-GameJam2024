@@ -1,88 +1,84 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class PlayerDetection : MonoBehaviour
+public class PlayerDetection : BaseInteractor
 {
-    public float rayDistance = 5f;
 
-    public Camera playerCamera; // Reference to the player's camera
-    public ConectionPause Conection;
+    [Tooltip("Camera Transform gets auto referenced if null.")]
+    [SerializeField] Transform _cameraTransform;
+    [SerializeField] float _interactRange = 5f;
+    [SerializeField] LayerMask _interactionLayer;
 
-    [Header("MoveCamera")]
-    public Transform PlayerPosition; // Reference to the player's position
-    public Transform TargetPosition; // Reference to the target position (computer)
-    public float transitionSpeed = 3.5f; // Speed of the camera transition
-    private bool isAtTarget = false; // Track if the camera is at the target position
-    private bool isMoving = false; // Track if the camera is currently moving
+    IInteractable _currentInteractable;
 
-    void Start()
+    CameraMover _cameraMover;
+
+    private void Awake()
     {
-        Conection = GameObject.Find("ScenesManager").GetComponent<ConectionPause>();
+        if (_cameraTransform == null)
+        {
+            _cameraTransform = Camera.main.transform;
+        }
+
+        _cameraMover = GetComponentInParent<CameraMover>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !isMoving) // Prevent input if the camera is moving
+        DetectInteractable();
+        
+        if (Input.GetKeyDown(KeyCode.E) && !_cameraMover.IsMoving) // Prevent input if the camera is moving
         {
-            ShootRaycast();
+            Interact();
         }
     }
 
-    void ShootRaycast()
+    public override void DetectInteractable()
     {
-        Vector3 origin = playerCamera.transform.position;
-        Vector3 direction = playerCamera.transform.forward;
-
-        Debug.DrawRay(origin, direction * rayDistance, Color.red, 5f);
-
-        RaycastHit hit;
-        if (Physics.Raycast(origin, direction, out hit, rayDistance))
+        if (!CanInteract)
         {
-            Debug.Log("Hit: " + hit.collider.name);
+            return;
+        }
 
-            if (hit.collider.CompareTag("Computer"))
+        Ray ray = new Ray(_cameraTransform.position, _cameraTransform.forward);
+        RaycastHit hit;
+
+        Debug.DrawRay(ray.origin, ray.direction * _interactRange, Color.red, 5f);
+
+        if (Physics.Raycast(ray, out hit, _interactRange, _interactionLayer))
+        {
+            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+
+            if (interactable != null)
             {
-                Debug.Log("Interacting with Computer!");
-                if (!Conection.isConnected)
+                if (_currentInteractable != interactable)
                 {
-                    Conection.SetConnectionStatus(true); // Connect to the computer
-                    StartCoroutine(MoveCamera(TargetPosition.position)); // Move to the computer
-                   
-                }
-                else
-                {
-                     Conection.SetConnectionStatus(false); 
-                    StartCoroutine(MoveCamera(PlayerPosition.position)); 
-                  
+                    _currentInteractable?.OnFocus(this);
+                    _currentInteractable = interactable;
+                    _currentInteractable.OnFocus(this);
                 }
             }
+            else
+            {
+                ClearInteractable();
+            }
+        }
+        else
+        {
+            ClearInteractable();
         }
     }
 
-    private IEnumerator MoveCamera(Vector3 target)
+    public override void Interact()
     {
-        isMoving = true; 
+        _currentInteractable?.OnInteract(this);
+    }
 
-        Vector3 startPosition = playerCamera.transform.position; 
-        float journeyLength = Vector3.Distance(startPosition, target); 
-        float startTime = Time.time; 
-
-        while (Vector3.Distance(playerCamera.transform.position, target) > 0.01f) 
+    void ClearInteractable()
+    {
+        if (_currentInteractable != null)
         {
-            float distCovered = (Time.time - startTime) * transitionSpeed; 
-            float fractionOfJourney = distCovered / journeyLength; 
-
-            playerCamera.transform.position = Vector3.Lerp(startPosition, target, fractionOfJourney); 
-            yield return null; 
+            _currentInteractable.OnUnfocus(this);
+            _currentInteractable = null;
         }
-
-        // Ensure the camera ends exactly at the target position
-        playerCamera.transform.position = target;
-
-        
-        isAtTarget = (target == TargetPosition.position); // Check if it's now at the computer
-        isMoving = false;
     }
 }
