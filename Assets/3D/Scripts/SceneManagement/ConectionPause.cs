@@ -13,7 +13,7 @@ public class ConectionPause : MonoBehaviour
         yield return new WaitForSeconds(0.5f); // Wait to ensure the 2D scene is loaded
 
         playerMovement3D = FindObjectOfType<PlayerMovement3D>();
-        playerMovement2D = FindObjectOfType<PlayerMovement2D>(); // Find the 2D player movement script
+        playerMovement2D = FindObjectOfType<PlayerMovement2D>(); 
 
         if (playerMovement2D == null)
         {
@@ -23,7 +23,7 @@ public class ConectionPause : MonoBehaviour
 
     private void Update()
     {
-        // Ensure the references are not null before accessing them
+        
         if (playerMovement2D != null && playerMovement3D != null)
         {
             // Enable or disable player movement based on connection status
