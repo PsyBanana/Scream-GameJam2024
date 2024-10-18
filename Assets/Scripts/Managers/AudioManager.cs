@@ -12,8 +12,7 @@ namespace StimpakEssentials
         [SerializeField] int _maxPooledAudioSources = 30;
 
         Queue<AudioSource> _sfxPool;
-        Dictionary<string, AudioClip> _audioClips;
-        Dictionary<string, List<AudioSource>> _activeSources;
+        Dictionary<AudioClip, List<AudioSource>> _activeSources;
 
         void Awake()
         {
@@ -22,9 +21,8 @@ namespace StimpakEssentials
 
         void InitializeAudioManager()
         {
-            _audioClips = new Dictionary<string, AudioClip>();
             _sfxPool = new Queue<AudioSource>();
-            _activeSources = new Dictionary<string, List<AudioSource>>();
+            _activeSources = new Dictionary<AudioClip, List<AudioSource>>();
 
             for (int i = 0; i < _pooledAudioSources; i++)
             {
@@ -36,47 +34,39 @@ namespace StimpakEssentials
             }
         }
 
-        public void RegisterAudioClip(string clipName, AudioClip clip)
+        public void PlayMusic(AudioClip audioClip, float volume = 1f, bool loop = true)
         {
-            if (!_audioClips.ContainsKey(clipName))
+            if (audioClip != null)
             {
-                _audioClips.Add(clipName, clip);
-            }
-        }
-
-        public void PlayMusic(string clipName, float volume = 1f, bool loop = true)
-        {
-            if (_audioClips.ContainsKey(clipName))
-            {
-                _musicAudioSource.clip = _audioClips[clipName];
+                _musicAudioSource.clip = audioClip;
                 _musicAudioSource.volume = volume;
                 _musicAudioSource.loop = loop;
                 _musicAudioSource.Play();
             }
         }
 
-        public void PlayGlobalSFX(string clipName, float volume = 1f)
+        public void PlayGlobalSFX(AudioClip audioClip, float volume = 1f)
         {
-            if (_audioClips.ContainsKey(clipName))
+            if (audioClip != null)
             {
-                _globalSFXAudioSource.PlayOneShot(_audioClips[clipName], volume);
+                _globalSFXAudioSource.PlayOneShot(audioClip, volume);
             }
         }
 
-        public void PlaySFXAtPoint(string clipName, Vector3 position, float volume = 1f, bool loop = false)
+        public void PlaySFXAtPoint(AudioClip audioClip, Vector3 position, float volume = 1f, bool loop = false)
         {
-            if (_audioClips.ContainsKey(clipName))
+            if (audioClip != null)
             {
                 AudioSource source = GetPooledAudioSource();
                 source.transform.position = position;
-                source.clip = _audioClips[clipName];
+                source.clip = audioClip;
                 source.volume = volume;
                 source.spatialBlend = 1f;
                 source.loop = loop;
                 source.gameObject.SetActive(true);
                 source.Play();
 
-                TrackSource(clipName, source);
+                TrackSource(audioClip, source);
 
                 if (!loop)
                 {
@@ -85,21 +75,21 @@ namespace StimpakEssentials
             }
         }
 
-        public void PlaySFXAttachedTo(string clipName, Transform target, float volume = 1f, bool loop = false)
+        public void PlaySFXAttachedTo(AudioClip audioClip, Transform target, float volume = 1f, bool loop = false)
         {
-            if (_audioClips.ContainsKey(clipName))
+            if (audioClip != null)
             {
                 AudioSource source = GetPooledAudioSource();
                 source.transform.SetParent(target);
                 source.transform.localPosition = Vector3.zero;
-                source.clip = _audioClips[clipName];
+                source.clip = audioClip;
                 source.volume = volume;
                 source.spatialBlend = 1f;
                 source.loop = loop;
                 source.gameObject.SetActive(true);
                 source.Play();
 
-                TrackSource(clipName, source);
+                TrackSource(audioClip, source);
 
                 if (!loop)
                 {
@@ -108,21 +98,21 @@ namespace StimpakEssentials
             }
         }
 
-        void TrackSource(string clipName, AudioSource source)
+        void TrackSource(AudioClip audioClip, AudioSource source)
         {
-            if (!_activeSources.ContainsKey(clipName))
+            if (!_activeSources.ContainsKey(audioClip))
             {
-                _activeSources[clipName] = new List<AudioSource>();
+                _activeSources[audioClip] = new List<AudioSource>();
             }
 
-            _activeSources[clipName].Add(source);
+            _activeSources[audioClip].Add(source);
         }
 
-        public void StopSFX(string clipName)
+        public void StopSFX(AudioClip audioClip)
         {
-            if (_activeSources.ContainsKey(clipName))
+            if (_activeSources.ContainsKey(audioClip))
             {
-                foreach (AudioSource source in _activeSources[clipName])
+                foreach (AudioSource source in _activeSources[audioClip])
                 {
                     source.Stop();
                     source.gameObject.transform.SetParent(null);
@@ -136,7 +126,7 @@ namespace StimpakEssentials
                     }
                 }
 
-                _activeSources[clipName].Clear();
+                _activeSources[audioClip].Clear();
             }
         }
 

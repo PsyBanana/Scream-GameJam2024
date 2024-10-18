@@ -18,7 +18,6 @@ public class ComputerInteractable : MonoBehaviour, IInteractable
             Player3D.Instance.TogglePlayer(false);
             ConnectionManager.Instance.SetConnectionStatus(true); // Connect to the computer
             _onCameraInteracted.Raise(_cameraTarget.position);
-
         }
         else
         {

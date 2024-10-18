@@ -12,8 +12,8 @@ public class ConnectionManager : SingletonBehaviour<ConnectionManager>
     {
         yield return new WaitForSeconds(0.5f); // Wait to ensure the 2D scene is loaded
 
-        PlayerMovement3D = FindObjectOfType<PlayerMovement3D>();
-        PlayerMovement2D = FindObjectOfType<PlayerMovement2D>(); // Find the 2D player movement script
+        PlayerMovement3D = FindAnyObjectByType<PlayerMovement3D>();
+        PlayerMovement2D = FindAnyObjectByType<PlayerMovement2D>(); // Find the 2D player movement script
 
         if (PlayerMovement2D == null)
         {
