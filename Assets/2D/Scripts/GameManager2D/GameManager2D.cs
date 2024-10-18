@@ -9,7 +9,7 @@ public class GameManager2D : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(CheckGameState)
+        //StartCoroutine(CheckGameState)
     }
 
     void Update()
