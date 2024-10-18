@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: ed76f32b488f31e42b271a2cf4d5b5fb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254506
+  packageName: UHFPS - Ultimate Horror FPS KIT
+  packageVersion: 1.4
+  assetPath: Assets/ThunderWire Studio/UHFPS/Content/Scripts/Runtime/UI/Options/Types/OptionsRadio.cs
+  uploadId: 677379

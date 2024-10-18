@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 50db993c93456f041a423a04f87565e9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254506
+  packageName: UHFPS - Ultimate Horror FPS KIT
+  packageVersion: 1.4
+  assetPath: Assets/ThunderWire Studio/UHFPS/Content/Shaders/EyeBlink/Runtime/EyeBlinkPass.cs
+  uploadId: 677379
