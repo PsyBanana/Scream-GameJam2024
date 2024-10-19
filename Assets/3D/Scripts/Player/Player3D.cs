@@ -1,9 +1,12 @@
 using StimpakEssentials;
+using UHFPS.Runtime;
 
 public class Player3D : SingletonBehaviour<Player3D>
 {
-    public void TogglePlayer(bool toggle)
+    public bool CanMove { get; set; }
+
+    public void FreezePlayer(bool toggle)
     {
-        gameObject.SetActive(toggle);
+        PlayerPresenceManager.Instance.FreezeMovement(toggle);
     }
 }

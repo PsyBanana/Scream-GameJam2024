@@ -1,33 +1,33 @@
 using UnityEngine;
-using ScriptableObjectArchitecture;
+using UHFPS.Runtime;
 
-public class ComputerInteractable : MonoBehaviour, IInteractable
+public class ComputerInteractable : MonoBehaviour, IHoverStart, IInteractStart, IHoverEnd
 {
     [SerializeField] Transform _cameraTarget;
-    [SerializeField] Vector3GameEvent _onCameraInteracted = default(Vector3GameEvent);
 
-    public void OnFocus(IInteractor interactor)
+    public void HoverStart()
     {
         
     }
 
-    public void OnInteract(IInteractor interactor)
+    public void InteractStart()
     {
         if (!ConnectionManager.Instance.IsConnected)
         {
-            Player3D.Instance.TogglePlayer(false);
-            ConnectionManager.Instance.SetConnectionStatus(true); // Connect to the computer
-            _onCameraInteracted.Raise(_cameraTarget.position);
+            // Connect to the computer
+            Player3D.Instance.FreezePlayer(true);
+            ConnectionManager.Instance.SetConnectionStatus(true);
+            PlayerPresenceManager.Instance.SwitchActiveCamera(_cameraTarget.gameObject, 3f, null);
         }
         else
         {
-            Player3D.Instance.TogglePlayer(true);
+            Player3D.Instance.FreezePlayer(false);
             ConnectionManager.Instance.SetConnectionStatus(false);
-            _onCameraInteracted.Raise(ConnectionManager.Instance.PlayerMovement3D.transform.position);
+            PlayerPresenceManager.Instance.SwitchToPlayerCamera(3f, null);
         }
     }
 
-    public void OnUnfocus(IInteractor interactor)
+    public void HoverEnd()
     {
         
     }
