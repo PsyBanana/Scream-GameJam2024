@@ -14,13 +14,13 @@ public class Sticks : MonoBehaviour
 
         if (CollectItems != null)
         {
-            Debug.Log("Found the Collect Script on: " + other.name); // Log if the CollectItems2D script was found
+            Debug.Log("Found the Collect Script on: " + other.name); 
             CollectItems.StickCollected();
             gameObject.SetActive(false);
         }
         else
         {
-            Debug.Log("CollectItems2D script not found on: " + other.name); // Log if the script was not found
+            Debug.Log("CollectItems2D script not found on: " + other.name);
         }
     }
 
