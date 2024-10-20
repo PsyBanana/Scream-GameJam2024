@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Flesh
+  - Computer
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Ground
   - Slope
   - World UI
-  - 
+  - 2DUI
   - 
   - 
   - 
