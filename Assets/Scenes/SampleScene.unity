@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraTarget: {fileID: 1578971499}
+  _sceneName: 2D
 --- !u!114 &390282369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1737,7 +1738,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad01a54bc4951243b1a39da758c2e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 2D
 --- !u!1 &877679608990098
 GameObject:
   m_ObjectHideFlags: 0

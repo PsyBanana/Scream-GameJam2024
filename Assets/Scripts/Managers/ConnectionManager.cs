@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using StimpakEssentials;
+using UnityEngine.SceneManagement;
 
 public class ConnectionManager : SingletonBehaviour<ConnectionManager>
 {
@@ -17,8 +18,11 @@ public class ConnectionManager : SingletonBehaviour<ConnectionManager>
 
         if (PlayerMovement2D == null)
         {
-            Debug.LogWarning("PlayerMovement2D script not found!");
+            Debug.LogWarning("PlayerMovement2D script not found at startup, waiting for scene load.");
         }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
 
     private void Update()
@@ -32,8 +36,27 @@ public class ConnectionManager : SingletonBehaviour<ConnectionManager>
         }
     }
 
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        PlayerMovement2D = FindAnyObjectByType<PlayerMovement2D>();
+    }
+
+    private void OnSceneUnloaded(Scene scene)
+    {
+        if (PlayerMovement2D != null && PlayerMovement2D.gameObject.scene == scene)
+        {
+            PlayerMovement2D = null;
+        }
+    }
+
     public void SetConnectionStatus(bool status)
     {
         IsConnected = status;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
 }
