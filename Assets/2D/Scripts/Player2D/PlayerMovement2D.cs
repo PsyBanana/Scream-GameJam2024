@@ -7,10 +7,15 @@ public class PlayerMovement2D : MonoBehaviour
     private Rigidbody rb;
 
     public Animator animator;
+    public Animator ShadowAnimation; // Reference to the shadow's animator
 
     Vector2 movement;
 
     public bool canMove = false;
+    private bool canAttack = true;
+
+    // Store the last direction (0 = Up, 1 = Down, 2 = Right, 3 = Left)
+    public int LastDirection { get; private set; }
 
     void Start()
     {
@@ -52,28 +57,29 @@ public class PlayerMovement2D : MonoBehaviour
 
         animator.SetFloat("Horizontal", moveX);
         animator.SetFloat("Vertical", moveY);
-        animator.SetFloat("Speed", movement.sqrMagnitude); 
+        animator.SetFloat("Speed", movement.sqrMagnitude);
 
 
         // Determine last direction based on movement
-        if (movement != Vector2.zero)
         {
+            // Determine last direction
             if (moveY > 0)
             {
-                animator.SetInteger("LastDirection", 0); // Up
+                LastDirection = 0; // Up
             }
             else if (moveY < 0)
             {
-                animator.SetInteger("LastDirection", 1); // Down
+                LastDirection = 1; // Down
             }
             else if (moveX > 0)
             {
-                animator.SetInteger("LastDirection", 2); // Right
+                LastDirection = 2; // Right
             }
             else if (moveX < 0)
             {
-                animator.SetInteger("LastDirection", 3); // Left
+                LastDirection = 3; // Left
             }
+            animator.SetInteger("LastDirection", LastDirection);
         }
     }
 }

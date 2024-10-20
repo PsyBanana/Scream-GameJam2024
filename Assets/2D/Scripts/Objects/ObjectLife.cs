@@ -15,9 +15,9 @@ public class ObjectLife : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (life <= 0)
+        if (life <= 0)   
         {
-            Destroy(gameObject);
+            Destroy(gameObject); // change to death animation
         }
     }
 

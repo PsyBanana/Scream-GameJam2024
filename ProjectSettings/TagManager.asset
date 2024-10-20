@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Flesh
   - Computer
+  - Player2D
   layers:
   - Default
   - TransparentFX
