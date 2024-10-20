@@ -47,7 +47,7 @@ MonoBehaviour:
   CylinderOrientation: 0
   CylinderRotationOffset: 0
   DisplayTips: 1
-  DisplayAllVertices: 0
+  DisplayAllVertices: 1
   DisplayVerticesColour: {r: 0, g: 0, b: 1, a: 1}
   EnableVertexToolsShortcuts: 1
   GizmoType: 1
@@ -57,7 +57,7 @@ MonoBehaviour:
   OverlapSelectedVertColour: {r: 1, g: 0, b: 0, a: 1}
   PointSelectKeyCode: 98
   PopupDialogOnFinish: 0
-  PreviewColliderType: 0
+  PreviewColliderType: 5
   PreviewDrawColor: {r: 0, g: 1, b: 1, a: 1}
   PreviewEnabled: 1
   RaycastDelayTime: 0.1
@@ -67,8 +67,8 @@ MonoBehaviour:
   RotatedColliderPivotAtCenter: 0
   rotatedDupeSettings:
     enabled: 0
-    axis: 0
-    NumberOfDuplications: 4
+    axis: 2
+    NumberOfDuplications: 2
     StartRotation: 0
     EndRotation: 360
     pivot: {fileID: 0}
@@ -94,4 +94,4 @@ MonoBehaviour:
   VertexSnapMethod: 2
   VertSelectKeyCode: 118
   VHACDPreview: 1
-  CurrentWindowTab: 3
+  CurrentWindowTab: 0
