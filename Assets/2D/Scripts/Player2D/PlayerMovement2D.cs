@@ -12,7 +12,7 @@ public class PlayerMovement2D : MonoBehaviour
     Vector2 movement;
 
     public bool canMove = false;
-    private bool canAttack = true;
+
 
     // Store the last direction (0 = Up, 1 = Down, 2 = Right, 3 = Left)
     public int LastDirection { get; private set; }
