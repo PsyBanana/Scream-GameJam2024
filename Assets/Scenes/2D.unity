@@ -352,6 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad6718b34812024d963f350ecbd5d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uniqueID: Player2D
 --- !u!1 &60058677
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,6 +515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bd157b3d6dbe704795888efa4c5337d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uniqueID: Stick2
 --- !u!65 &242367572
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -819,6 +821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bd157b3d6dbe704795888efa4c5337d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uniqueID: Stick1
 --- !u!65 &751690633
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1421,6 +1424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bd157b3d6dbe704795888efa4c5337d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uniqueID: Stick3
 --- !u!65 &1818809544
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -1,17 +1,8 @@
-using System;
 using UnityEngine;
 
 public class Sticks : MonoBehaviour
 {
     [SerializeField] string _uniqueID;
-
-    private void Awake()
-    {
-        if (string.IsNullOrEmpty(_uniqueID))
-        {
-            GenerateNewID();
-        }
-    }
 
     private void Start()
     {
@@ -50,11 +41,5 @@ public class Sticks : MonoBehaviour
             bool loadedState = ES3.Load<bool>(_uniqueID);
             gameObject.SetActive(loadedState);
         }
-    }
-
-    [ContextMenu("Generate New ID")]
-    public void GenerateNewID()
-    {
-        _uniqueID = Guid.NewGuid().ToString();
     }
 }
