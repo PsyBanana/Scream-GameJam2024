@@ -13,7 +13,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - BACKFACE_NORMAL_MODE_MIRROR
-  - _WINDQUALITY_BEST
+  - _WINDQUALITY_NONE
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -93,7 +93,7 @@ Material:
     m_Floats:
     - BACKFACE_NORMAL_MODE: 1
     - EFFECT_BILLBOARD: 0
-    - EFFECT_EXTRA_TEX: 1
+    - EFFECT_EXTRA_TEX: 0
     - _AlphaClip: 0
     - _AlphaClipThreshold: 0.33
     - _AlphaToMask: 0
@@ -112,10 +112,10 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.4472136
     - _GlossyReflections: 1
-    - _HueVariationKwToggle: 1
+    - _HueVariationKwToggle: 0
     - _Metallic: 0
     - _Mode: 0
-    - _NormalMapKwToggle: 1
+    - _NormalMapKwToggle: 0
     - _OcclusionStrength: 1
     - _OldHueVarBehavior: 0
     - _Parallax: 0.02
@@ -131,8 +131,8 @@ Material:
     - _SubsurfaceKwToggle: 0
     - _Surface: 0
     - _UVSec: 0
-    - _WINDQUALITY: 4
-    - _WindQuality: 1
+    - _WINDQUALITY: 0
+    - _WindQuality: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:

@@ -15,7 +15,7 @@ public class PlayerMovement2D : MonoBehaviour
 
 
     // Store the last direction (0 = Up, 1 = Down, 2 = Right, 3 = Left)
-    public int LastDirection { get; private set; }
+    public int LastDirection { get; set; }
 
     void Start()
     {
