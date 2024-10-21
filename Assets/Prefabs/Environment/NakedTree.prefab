@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8084762990702362206}
   - component: {fileID: -3367975850871943942}
   - component: {fileID: 7468547481032453196}
+  - component: {fileID: 7923231263282410039}
   m_Layer: 0
   m_Name: NakedTree
   m_TagString: Untagged
@@ -125,3 +126,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1920034, y: 5.0384045, z: 1.3156161}
   m_Center: {x: -0.0040469766, y: 2.5186987, z: -0.08630964}
+--- !u!114 &7923231263282410039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8302903054155308873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
