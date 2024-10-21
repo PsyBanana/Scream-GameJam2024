@@ -1,10 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Sticks : MonoBehaviour
 {
+    [SerializeField] string _uniqueID;
 
+    private void Start()
+    {
+        LoadObjectState();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,6 +19,7 @@ public class Sticks : MonoBehaviour
         {
             Debug.Log("Found the Collect Script on: " + other.name); 
             CollectItems.StickCollected();
+            SaveObjectState();
             gameObject.SetActive(false);
         }
         else
@@ -24,4 +28,18 @@ public class Sticks : MonoBehaviour
         }
     }
 
+    public void SaveObjectState()
+    {
+        bool isCollected = !gameObject.activeSelf;
+        ES3.Save(_uniqueID, isCollected);
+    }
+
+    public void LoadObjectState()
+    {
+        if (ES3.KeyExists(_uniqueID))
+        {
+            bool loadedState = ES3.Load<bool>(_uniqueID);
+            gameObject.SetActive(loadedState);
+        }
+    }
 }

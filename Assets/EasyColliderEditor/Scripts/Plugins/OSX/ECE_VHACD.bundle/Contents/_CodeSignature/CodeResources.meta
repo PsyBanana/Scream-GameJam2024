@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 58554b9c464101245b99c8d933bd5453
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 67880
+  packageName: Easy Collider Editor
+  packageVersion: 6.16.2
+  assetPath: Assets/EasyColliderEditor/Scripts/Plugins/OSX/ECE_VHACD.bundle/Contents/_CodeSignature/CodeResources
+  uploadId: 701112

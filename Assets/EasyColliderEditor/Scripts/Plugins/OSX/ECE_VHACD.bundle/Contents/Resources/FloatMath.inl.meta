@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a469a75b8323e8c489729d9f7a9f573b
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 67880
+  packageName: Easy Collider Editor
+  packageVersion: 6.16.2
+  assetPath: Assets/EasyColliderEditor/Scripts/Plugins/OSX/ECE_VHACD.bundle/Contents/Resources/FloatMath.inl
+  uploadId: 701112
