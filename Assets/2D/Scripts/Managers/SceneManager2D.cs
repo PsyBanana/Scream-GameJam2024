@@ -9,7 +9,6 @@ public class SceneManager2D : SingletonBehaviour<SceneManager2D>
     {
         if (!SceneManager.GetSceneByName(sceneName).isLoaded)
         {
-            //SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
             StartCoroutine(LoadSceneAtPosition(sceneName, new Vector3(0f, 250f, 0f)));
         }
     }
@@ -36,6 +35,7 @@ public class SceneManager2D : SingletonBehaviour<SceneManager2D>
 
         yield return loadedScene.isLoaded;
 
+        Player2D player2D = FindAnyObjectByType<Player2D>();
         PlayerMovement2D playerMovement2D = FindAnyObjectByType<PlayerMovement2D>();
 
         if (loadedScene.isLoaded)
@@ -46,9 +46,19 @@ public class SceneManager2D : SingletonBehaviour<SceneManager2D>
                 obj.transform.position += positionOffset;
             }
 
-            if (playerMovement2D != null)
+            if (player2D != null)
             {
-                playerMovement2D.GetRigidbody().MovePosition(positionOffset);
+                if (ES3.KeyExists(player2D.GetUniqueID() + "_Position"))
+                {
+                    player2D.LoadPlayerPosition();
+                }
+                else
+                {
+                    if (playerMovement2D != null)
+                    {
+                        playerMovement2D.GetRigidbody().MovePosition(positionOffset);
+                    }
+                }
             }
         }
     }
