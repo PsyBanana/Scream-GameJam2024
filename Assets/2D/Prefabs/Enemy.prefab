@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d88fa64b8b98b4387a2d6f16ed8e9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uniqueID: Enemy2D
   moveSpeed: 5.75
   detectionRange: 18
   stopDistance: 2.5

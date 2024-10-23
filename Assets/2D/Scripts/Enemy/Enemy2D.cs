@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy2D : MonoBehaviour
 {
+    [SerializeField] string _uniqueID;
+
     public float moveSpeed = 2f;        // Speed at which the enemy moves
     public float detectionRange = 4f;   // How far the enemy can detect the player
     public float stopDistance = 0.5f;   // Distance to stop when close to the player
@@ -23,6 +25,13 @@ public class Enemy2D : MonoBehaviour
 
         // Start with the Eating animation
         animator.SetBool("IsEating", true);
+
+        LoadEnemy2DData();
+
+        if (isDead)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     void Update()
@@ -130,5 +139,31 @@ public class Enemy2D : MonoBehaviour
     {
         isDead = true;
         animator.SetBool("IsDead", true);
+    }
+
+    public void SaveEnemy2DData()
+    {
+        Vector3 enemyPosition = transform.position;
+        ES3.Save(_uniqueID + "_Position", enemyPosition);
+
+        bool isDead = this.isDead;
+        ES3.Save(_uniqueID + "_IsDead", isDead);
+    }
+
+    public void LoadEnemy2DData()
+    {
+        if (ES3.KeyExists(_uniqueID + "_Position"))
+        {
+            Vector3 loadedPosition = ES3.Load<Vector3>(_uniqueID + "_Position");
+            transform.position = loadedPosition;
+
+            bool isLoadedDead = ES3.Load<bool>(_uniqueID + "_IsDead");
+            this.isDead = isLoadedDead;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        SaveEnemy2DData();
     }
 }
