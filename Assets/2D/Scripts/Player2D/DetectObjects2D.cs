@@ -5,42 +5,46 @@ using UnityEngine;
 public class DetectObjects2D : MonoBehaviour
 {
     public float rayDistance = 3f;
-    private PlayerMovement2D playerMovement;  // Reference to PlayerMovement2D
+    private PlayerMovement2D playerMovement;
     private bool canAttack = true;
 
     void Start()
     {
-        // Get the PlayerMovement2D component from the player
+        
         playerMovement = GetComponent<PlayerMovement2D>();
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && canAttack) // Left mouse button
+        // Only allow attacking if the axe is equipped
+        if (Input.GetMouseButtonDown(0) && canAttack && playerMovement.isAxeEquipped)
         {
-            canAttack = false;
-            ShootRay();
-            StartCoroutine(ReloadAttack());
+            canAttack = false; 
+            ShootRay(); 
+            StartCoroutine(ReloadAttack()); 
         }
     }
 
     void ShootRay()
     {
+        playerMovement.animator.SetTrigger("Attack"); // Trigger attack animation
+        Debug.Log("PlayerAttack");
+
         Vector3 direction = Vector3.zero;
 
         // Determine the direction to shoot based on the player's last direction
         switch (playerMovement.LastDirection)
         {
-            case 0: // Up
+            case 0: 
                 direction = Vector3.up;
                 break;
-            case 1: // Down
+            case 1: 
                 direction = Vector3.down;
                 break;
-            case 2: // Right
+            case 2: 
                 direction = Vector3.right;
                 break;
-            case 3: // Left
+            case 3: 
                 direction = Vector3.left;
                 break;
         }
@@ -48,6 +52,7 @@ public class DetectObjects2D : MonoBehaviour
         Vector3 origin = transform.position;
 
         RaycastHit hit;
+       
         if (Physics.Raycast(origin, direction, out hit, rayDistance))
         {
             Debug.Log("Hit: " + hit.collider.name);
@@ -55,7 +60,7 @@ public class DetectObjects2D : MonoBehaviour
             ObjectLife objectLife = hit.collider.GetComponent<ObjectLife>();
             if (objectLife != null)
             {
-                objectLife.TakeDamage(1);
+                objectLife.TakeDamage(1); 
             }
         }
         else
@@ -63,12 +68,12 @@ public class DetectObjects2D : MonoBehaviour
             Debug.Log("No hit detected");
         }
 
-        Debug.DrawRay(origin, direction * rayDistance, Color.red, 3f);
+        Debug.DrawRay(origin, direction * rayDistance, Color.red, 3f); // Visualize the ray
     }
 
     private IEnumerator ReloadAttack()
     {
-        yield return  new WaitForSeconds(1f);
-        canAttack = true;
+        yield return new WaitForSeconds(1f); 
+        canAttack = true; 
     }
 }

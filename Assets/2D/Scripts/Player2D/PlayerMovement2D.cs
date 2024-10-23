@@ -13,6 +13,8 @@ public class PlayerMovement2D : MonoBehaviour
 
     public bool canMove = false;
 
+    public bool isAxeEquipped = false;
+
 
     // Store the last direction (0 = Up, 1 = Down, 2 = Right, 3 = Left)
     public int LastDirection { get; set; }
@@ -37,7 +39,7 @@ public class PlayerMovement2D : MonoBehaviour
     void FixedUpdate()
     {
         
-        if (canMove)
+        if (canMove )
         {
             
             Vector3 moveVector = new Vector3(movement.x, movement.y, 0);
@@ -80,6 +82,20 @@ public class PlayerMovement2D : MonoBehaviour
                 LastDirection = 3; // Left
             }
             animator.SetInteger("LastDirection", LastDirection);
+        }
+    }
+
+    public void EquipAxe(bool equip)
+    {
+        isAxeEquipped = equip; // Set the equipped state
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Axe")) // Assuming your axe has the tag "Axe"
+        {
+            EquipAxe(true); // Equip the axe
+            Destroy(other.gameObject); // Destroy the axe object
         }
     }
 
