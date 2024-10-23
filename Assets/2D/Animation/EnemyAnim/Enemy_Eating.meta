@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/2D/Animation/EnemyAnim/Enemy_Eating.meta
 guid: 8c48f873877cbe14c8d58263303c5b2a
 folderAsset: yes
+========
+guid: 56d49560b3b80474782a93e51d31e264
+>>>>>>>> f817a76c5bd8c4d2a891827d61c6aef2840ff0a9:Assets/ThunderWire Studio/UHFPS/Integrations/Emerald AI 3.0.unitypackage.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
