@@ -8,6 +8,7 @@ public class ComputerError : MonoBehaviour, IGameEventListener
 
     TextMeshProUGUI _errorText;
 
+    Player3D _player3D;
     ComputerInteractable _computerInteractable;
 
     private void Awake()
@@ -18,12 +19,13 @@ public class ComputerError : MonoBehaviour, IGameEventListener
 
     private void Start()
     {
+        _player3D = FindAnyObjectByType<Player3D>();
         _computerInteractable = FindAnyObjectByType<ComputerInteractable>();
     }
 
     public void DisplayErrorMessage(string message)
     {
-        if (!_errorText)
+        if (!_errorText || !_player3D || !_computerInteractable)
         {
             return;
         }
@@ -32,11 +34,17 @@ public class ComputerError : MonoBehaviour, IGameEventListener
         _errorText.text = message;
 
         Invoke(nameof(ExitComputerView), 2.5f);
+
+        UIManager.Get<UIFade>().Fade(0f, 1f, 3f);
     }
 
     void ExitComputerView()
     {
         _computerInteractable.InteractStart();
+
+        _player3D.TeleportPlayerTo(new Vector3(-180f, 0f, -250f));
+
+        UIManager.Get<UIFade>().Fade(1f, 0f, 0.5f);
     }
 
     private void OnEnable()

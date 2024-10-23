@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.15808952, g: 0.18194565, b: 0.19823766, a: 1}
+  m_IndirectSpecularColor: {r: 0.15808928, g: 0.18194525, b: 0.1982373, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 60058680}
   - component: {fileID: 60058679}
   - component: {fileID: 60058678}
-  m_Layer: 14
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,9 +484,9 @@ Canvas:
   m_GameObject: {fileID: 60058677}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_RenderMode: 1
+  m_Camera: {fileID: 1475372401}
+  m_PlaneDistance: 5
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -2714,7 +2714,7 @@ GameObject:
   - component: {fileID: 617860998}
   - component: {fileID: 617861000}
   - component: {fileID: 617860999}
-  m_Layer: 14
+  m_Layer: 5
   m_Name: ItemsCollected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2737,7 +2737,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 36.539978, y: -26.099976}
+  m_AnchoredPosition: {x: 12, y: -1}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &617860999
@@ -2762,10 +2762,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 38caa871d45832b4a8ce6e8bb95d9653, type: 3}
-    m_FontSize: 25
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -7277,7 +7277,7 @@ GameObject:
   - component: {fileID: 1912909854}
   - component: {fileID: 1912909853}
   - component: {fileID: 1912909852}
-  m_Layer: 14
+  m_Layer: 5
   m_Name: UI Computer Error
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7363,8 +7363,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
-  m_fontSizeBase: 35
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 10
