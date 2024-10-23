@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.15808928, g: 0.18194525, b: 0.1982373, a: 1}
+  m_IndirectSpecularColor: {r: 0.15808952, g: 0.18194565, b: 0.19823766, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -232,7 +232,7 @@ Transform:
   m_GameObject: {fileID: 25058430}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 47.2, z: -0.5}
+  m_LocalPosition: {x: 14.3, y: 47.2, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7171,7 +7171,7 @@ Transform:
   m_GameObject: {fileID: 1908539033}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 64.86, y: 69.22, z: -0.2}
+  m_LocalPosition: {x: -12.4, y: 48.1, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7239,9 +7239,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5.75
   detectionRange: 10
-  stopDistance: 1.5
-  attackRange: 1.6
-  attackCooldown: 1.5
+  stopDistance: 2.5
+  attackRange: 2.5
+  attackCooldown: 0.2
   animator: {fileID: 1908539042}
 --- !u!95 &1908539042
 Animator:

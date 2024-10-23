@@ -7,7 +7,7 @@ public class Enemy2D : MonoBehaviour
     public float moveSpeed = 2f;        // Speed at which the enemy moves
     public float detectionRange = 4f;   // How far the enemy can detect the player
     public float stopDistance = 0.5f;   // Distance to stop when close to the player
-    public float attackRange = 1f;      // Range within which the enemy can attack
+    public float attackRange = 2.5f;    // Set to 2.5 for attack range
     public float attackCooldown = 1.5f; // Time between attacks
     private Transform player;           // Reference to the player
     private bool playerInRange = false; // Whether the player is in detection range
@@ -33,24 +33,28 @@ public class Enemy2D : MonoBehaviour
         {
             if (!isStanding)
             {
-                // Stop the Eating animation and start the Standing Up animation
+                // Stop the Eating animation and start the delay before chasing
                 animator.SetBool("IsEating", false);
-                animator.SetBool("IsStanding", true);
-                StartCoroutine(EnemyStanding());
-                
+                StartCoroutine(DelayBeforeChase());
             }
-            else if (isStanding && !animator.GetBool("IsStanding"))
+            else
             {
-                // If standing up is done, transition to movement or attack
+                // After standing up, transition to movement or attack
                 float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
                 if (distanceToPlayer <= attackRange && canAttack)
                 {
                     StartCoroutine(Attack());
                 }
-                else if (distanceToPlayer > stopDistance)
+                else if (distanceToPlayer > attackRange)
                 {
-                    FollowPlayer();
+                    // Stop attacking if the player is out of attack range
+                    animator.SetBool("IsAttacking", false);
+
+                    if (distanceToPlayer > stopDistance)
+                    {
+                        FollowPlayer();  // Move towards the player if out of attack range
+                    }
                 }
             }
         }
@@ -103,19 +107,22 @@ public class Enemy2D : MonoBehaviour
         canAttack = false;
 
         // Wait until attack is finished
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(3.5f);
 
         // Stop the attack animation
         animator.SetBool("IsAttacking", false);
+
+        // Wait for cooldown before allowing another attack
         yield return new WaitForSeconds(attackCooldown);
 
         canAttack = true;
     }
 
-    IEnumerator EnemyStanding()
+    // Delay before starting to chase the player
+    IEnumerator DelayBeforeChase()
     {
-        yield return new WaitForSeconds(1.5f);
-        isStanding = true;
+        yield return new WaitForSeconds(4f);  // 1-second delay
+        isStanding = true;  // Now the enemy can start moving
     }
 
     // Function to handle enemy death
