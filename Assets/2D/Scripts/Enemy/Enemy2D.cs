@@ -15,31 +15,37 @@ public class Enemy2D : MonoBehaviour
     private bool isDead = false;        // If the enemy is dead
     private bool canAttack = true;      // If the enemy can attack again
     [SerializeField]
-    private Animator animator;          // Reference to the animator
+    private Animator animator;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        // Start with the Eating animation
+        animator.SetBool("IsEating", true);
     }
 
     void Update()
     {
         DetectPlayer();
+
         if (playerInRange && !isDead)
         {
             if (!isStanding)
             {
+                // Stop the Eating animation and start the Standing Up animation
+                animator.SetBool("IsEating", false);
+                animator.SetBool("IsStanding", true);
+                StartCoroutine(EnemyStanding());
                 
-                animator.SetBool("isStanding", true);
-                isStanding = true;
             }
-            else
+            else if (isStanding && !animator.GetBool("IsStanding"))
             {
+                // If standing up is done, transition to movement or attack
                 float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
                 if (distanceToPlayer <= attackRange && canAttack)
                 {
-                    
                     StartCoroutine(Attack());
                 }
                 else if (distanceToPlayer > stopDistance)
@@ -55,15 +61,13 @@ public class Enemy2D : MonoBehaviour
     {
         if (player == null)
         {
-            
             GameObject playerObject = GameObject.FindWithTag("Player2D");
             if (playerObject != null)
             {
-                player = playerObject.transform; 
+                player = playerObject.transform;
             }
         }
 
-        
         if (player != null)
         {
             float distance = Vector3.Distance(transform.position, player.position);
@@ -78,16 +82,13 @@ public class Enemy2D : MonoBehaviour
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-         
             if (distanceToPlayer > stopDistance)
             {
-            
                 Vector3 direction = (player.position - transform.position).normalized;
 
                 animator.SetFloat("Horizontal", direction.x);
                 animator.SetFloat("Vertical", direction.y);
 
-               
                 transform.position += direction * moveSpeed * Time.deltaTime;
             }
         }
@@ -97,24 +98,30 @@ public class Enemy2D : MonoBehaviour
     IEnumerator Attack()
     {
         // Trigger the attack animation
-        animator.SetBool("isAttacking", true);
+        animator.SetBool("IsAttacking", true);
 
         canAttack = false;
 
-       
+        // Wait until attack is finished
         yield return new WaitForSeconds(0.5f);
 
-       
-        animator.SetBool("isAttacking", false);
+        // Stop the attack animation
+        animator.SetBool("IsAttacking", false);
         yield return new WaitForSeconds(attackCooldown);
 
-        canAttack = true; 
+        canAttack = true;
+    }
+
+    IEnumerator EnemyStanding()
+    {
+        yield return new WaitForSeconds(1.5f);
+        isStanding = true;
     }
 
     // Function to handle enemy death
     public void Die()
     {
         isDead = true;
-        animator.SetBool("isDead", true); 
+        animator.SetBool("IsDead", true);
     }
 }
