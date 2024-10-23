@@ -3,9 +3,14 @@ using TMPro;
 
 public class ComputerError : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI _errorText;
+    TextMeshProUGUI _errorText;
 
     ComputerInteractable _computerInteractable;
+
+    private void Awake()
+    {
+        _errorText = GetComponent<TextMeshProUGUI>();
+    }
 
     private void Start()
     {
