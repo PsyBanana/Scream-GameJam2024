@@ -35,7 +35,7 @@ public class ComputerError : MonoBehaviour, IGameEventListener
 
         Invoke(nameof(ExitComputerView), 2.5f);
 
-        UIManager.Get<UIFade>().Fade(0f, 1f, 3f);
+        UIManager.Get<UIFade>().Fade(0f, 1f, 2.5f);
     }
 
     void ExitComputerView()
