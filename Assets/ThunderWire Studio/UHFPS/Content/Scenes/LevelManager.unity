@@ -67,9 +67,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -131,6 +128,70 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 739956880366519295, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: LevelInfos.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 739956880366519295, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: LevelInfos.Array.data[0].SceneName
+      value: MainScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 739956880366519295, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: LevelInfos.Array.data[1].SceneName
+      value: MainScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 739956880366519295, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: LevelInfos.Array.data[2].SceneName
+      value: MainScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 739956880366519295, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: LevelInfos.Array.data[3].SceneName
+      value: MainScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 739956880366519295, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: LevelInfos.Array.data[0].Background
+      value: 
+      objectReference: {fileID: 21300000, guid: 8a90b4371d5d5b6458c58d448a0e4d7e, type: 3}
+    - target: {fileID: 739956880366519295, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: LevelInfos.Array.data[1].Background
+      value: 
+      objectReference: {fileID: 21300000, guid: 8a90b4371d5d5b6458c58d448a0e4d7e, type: 3}
+    - target: {fileID: 739956880366519295, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: LevelInfos.Array.data[3].Background
+      value: 
+      objectReference: {fileID: 21300000, guid: 8a90b4371d5d5b6458c58d448a0e4d7e, type: 3}
+    - target: {fileID: 739956880366519295, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: LevelInfos.Array.data[0].Title.GlocText
+      value: '*MainScene'
+      objectReference: {fileID: 0}
+    - target: {fileID: 739956880366519295, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: LevelInfos.Array.data[1].Title.GlocText
+      value: '*MainScene'
+      objectReference: {fileID: 0}
+    - target: {fileID: 739956880366519295, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: LevelInfos.Array.data[2].Title.GlocText
+      value: '*MainScene'
+      objectReference: {fileID: 0}
+    - target: {fileID: 739956880366519295, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: LevelInfos.Array.data[3].Title.GlocText
+      value: '*MainScene'
+      objectReference: {fileID: 0}
+    - target: {fileID: 739956880366519295, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: LevelInfos.Array.data[0].Description.GlocText
+      value: loading.description.mainscene
+      objectReference: {fileID: 0}
+    - target: {fileID: 739956880366519295, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: LevelInfos.Array.data[1].Description.GlocText
+      value: loading.description.mainscene
+      objectReference: {fileID: 0}
+    - target: {fileID: 739956880366519295, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: LevelInfos.Array.data[2].Description.GlocText
+      value: loading.description.mainscene
+      objectReference: {fileID: 0}
+    - target: {fileID: 739956880366519295, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: LevelInfos.Array.data[3].Description.GlocText
+      value: loading.description.mainscene
+      objectReference: {fileID: 0}
     - target: {fileID: 1397992443369760298, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

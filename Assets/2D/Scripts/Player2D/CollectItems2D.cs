@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
+using ScriptableObjectArchitecture;
 
 public class CollectItems2D : MonoBehaviour
 {
+    [SerializeField] GameEvent _onAllSticksCollectedEvent = default(GameEvent);
 
     public int NumberOfSticks { get; set; }
     public int TotalSticksNeeded = 3;
@@ -20,6 +22,11 @@ public class CollectItems2D : MonoBehaviour
     {
         NumberOfSticks++;
         UpdateSticksUI();
+
+        if (NumberOfSticks >= TotalSticksNeeded)
+        {
+            _onAllSticksCollectedEvent.Raise();
+        }
     }
 
     public void UpdateSticksUI()
