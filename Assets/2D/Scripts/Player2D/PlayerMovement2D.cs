@@ -82,4 +82,9 @@ public class PlayerMovement2D : MonoBehaviour
             animator.SetInteger("LastDirection", LastDirection);
         }
     }
+
+    public Rigidbody GetRigidbody()
+    {
+        return rb;
+    }
 }
