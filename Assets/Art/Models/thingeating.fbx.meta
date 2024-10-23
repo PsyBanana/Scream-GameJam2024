@@ -56,11 +56,11 @@ ModelImporter:
       internalID: 2073693694548410006
       firstFrame: 0
       lastFrame: 221
-      wrapMode: 0
+      wrapMode: 2
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
-      loop: 0
+      loop: 1
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
