@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.15808952, g: 0.18194565, b: 0.19823766, a: 1}
+  m_IndirectSpecularColor: {r: 0.15808928, g: 0.18194525, b: 0.1982373, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -252,6 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6f034d1f727b04bad1d78f90f370f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onAllSticksCollectedEvent: {fileID: 0}
   TotalSticksNeeded: 3
   SticksUI: {fileID: 617860999}
 --- !u!114 &25058439
@@ -5596,7 +5597,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
