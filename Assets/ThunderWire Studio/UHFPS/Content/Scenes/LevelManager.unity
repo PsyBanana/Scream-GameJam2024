@@ -151,7 +151,7 @@ PrefabInstance:
     - target: {fileID: 739956880366519295, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
       propertyPath: LevelInfos.Array.data[0].Background
       value: 
-      objectReference: {fileID: 21300000, guid: 8a90b4371d5d5b6458c58d448a0e4d7e, type: 3}
+      objectReference: {fileID: 21300000, guid: 9fbae7bcc2c40a24d9b0342365a7965f, type: 3}
     - target: {fileID: 739956880366519295, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
       propertyPath: LevelInfos.Array.data[1].Background
       value: 
@@ -215,6 +215,10 @@ PrefabInstance:
     - target: {fileID: 1397992443369760298, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621731281362264209, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2674515566535311797, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
       propertyPath: m_Name
